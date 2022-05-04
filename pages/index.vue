@@ -32,17 +32,17 @@
         methods: {
             //Receives the message, maybe I need to add the user (since there is only one is not needed I think)
             addMessage(message) {
-                this.messages.push(message);
-                this.makeRequest(message);
+              this.messages.push(message);
+              this.makeRequest(message);
             },
             makeRequest(message) {
               this.loading = true; 
-
+              
               //useless web with delay just to test
-              axios.get('https://httpbin.org/delay/2')
-              .then(response => { 
-                alert(message.message);
-                console.log(message);
+              axios.post('/message', 
+                {messageText: message.messageText}
+              ).then(response => { 
+                this.messages.push(response.data.answer);
               }).catch(error => {  
                 //do nothin rn 
               }).finally(() => (this.loading = false));

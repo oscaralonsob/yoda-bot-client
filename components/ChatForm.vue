@@ -28,7 +28,8 @@ export default {
     sendMessage() {
       //emit message, add all info needed
       this.$emit("messagesent", {
-        message: this.newMessage,
+        messageText: this.newMessage,
+        user: "user"
       });
       this.newMessage = "";
     },

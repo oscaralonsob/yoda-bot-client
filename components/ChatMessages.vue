@@ -3,7 +3,7 @@
     <li class="left clearfix" v-for="message in messages" :key="message.id">
       <div class="clearfix">
         <p>
-          {{ message.message }}
+          <b> {{ message.user }}: </b> {{ message.messageText }}
         </p>
       </div>
     </li>
