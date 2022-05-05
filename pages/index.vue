@@ -52,7 +52,7 @@
                 localStorage.setItem('lastMessageWasFound', response.data.answer.resultFound);
                 localStorage.setItem('storeSession', response.data.storeSession);
               }).catch(error => {  
-                //do nothin rn 
+                this.messages.push({user: "bot", messageText: "Sorry I am. A mistake has ocurred. You can try again if you want."});
               }).finally(() => (this.loading = false));
           }
         },
