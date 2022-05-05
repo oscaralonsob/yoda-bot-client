@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-if="loading">
-      Typing
+      writing...
     </div>
   </div>
 </template>
