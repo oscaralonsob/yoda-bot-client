@@ -43,11 +43,20 @@
                 {messageText: message.messageText}
               ).then(response => { 
                 this.messages.push(response.data.answer);
+
+                //I use localStorage for this since I have no session and olny one user. Otherwise I'd use DB and session to store this info
+                localStorage.setItem('conversation', JSON.stringify(this.messages));
               }).catch(error => {  
                 //do nothin rn 
               }).finally(() => (this.loading = false));
           }
-        }
+        },
+        beforeMount(){
+          if (localStorage.getItem('conversation') != null) {
+            this.messages = JSON.parse(localStorage.getItem('conversation')) || [];
+            console.log(this.messages)
+          }
+        },
     }
 
 
