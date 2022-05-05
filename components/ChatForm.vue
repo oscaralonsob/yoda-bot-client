@@ -26,12 +26,14 @@ export default {
   },
   methods: {
     sendMessage() {
-      //emit message, add all info needed
-      this.$emit("messagesent", {
-        messageText: this.newMessage,
-        user: "user"
-      });
-      this.newMessage = "";
+      if (this.newMessage != "") {
+        //emit message, add all info needed
+        this.$emit("messagesent", {
+          messageText: this.newMessage,
+          user: "user"
+        });
+        this.newMessage = "";
+      }
     },
   },
 };
