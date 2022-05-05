@@ -27,7 +27,7 @@ export default {
   methods: {
     sendMessage() {
       if (this.newMessage != "") {
-        //emit message, add all info needed
+        //emit the message and user
         this.$emit("messagesent", {
           messageText: this.newMessage,
           user: "user"

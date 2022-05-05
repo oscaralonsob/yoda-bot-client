@@ -30,7 +30,7 @@
             }
         },
         methods: {
-            //Receives the message, maybe I need to add the user (since there is only one is not needed I think)
+            // Receives the message
             addMessage(message) {
               this.messages.push(message);
               this.makeRequest(message);
@@ -47,7 +47,7 @@
               ).then(response => { 
                 this.messages.push(response.data.answer);
 
-                //I use localStorage for this since I have no session and olny one user. Otherwise I'd use DB and session to store this info
+                // I used localStorage for this since I have no session and olny one user. Otherwise I'd use DB and session to store this info
                 localStorage.setItem('conversation', JSON.stringify(this.messages));
                 localStorage.setItem('lastMessageWasFound', response.data.answer.resultFound);
                 localStorage.setItem('storeSession', response.data.storeSession);
@@ -56,6 +56,7 @@
               }).finally(() => (this.loading = false));
           }
         },
+        // Loads the history
         beforeMount(){
           if (localStorage.getItem('conversation') != null) {
             this.messages = JSON.parse(localStorage.getItem('conversation')) || [];
