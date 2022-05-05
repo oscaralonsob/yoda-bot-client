@@ -38,14 +38,17 @@
             makeRequest(message) {
               this.loading = true; 
               
-              //useless web with delay just to test
               axios.post('/message', 
-                {messageText: message.messageText}
+                {
+                  messageText: message.messageText,
+                  lastMessageWasFound: localStorage.getItem('lastMessageWasFound')
+                }
               ).then(response => { 
                 this.messages.push(response.data.answer);
 
                 //I use localStorage for this since I have no session and olny one user. Otherwise I'd use DB and session to store this info
                 localStorage.setItem('conversation', JSON.stringify(this.messages));
+                localStorage.setItem('lastMessageWasFound', response.data.answer.resultFound);
               }).catch(error => {  
                 //do nothin rn 
               }).finally(() => (this.loading = false));
